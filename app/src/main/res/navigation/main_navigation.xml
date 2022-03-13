@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/competitionsFragment">
+
+    <fragment
+        android:id="@+id/competitionsFragment"
+        android:name="com.limitless.moansports.CompetitionsFragment"
+        android:label="competitions_fragment"
+        tools:layout="@layout/competitions_fragment" >
+        <action
+            android:id="@+id/action_competitionsFragment_to_teamsFragment"
+            app:destination="@id/teamsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/teamsFragment"
+        android:name="com.limitless.moansports.TeamsFragment"
+        android:label="fragment_teams"
+        tools:layout="@layout/fragment_teams" >
+        <action
+            android:id="@+id/action_teamsFragment_to_teamViewFragment"
+            app:destination="@id/teamViewFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/teamViewFragment"
+        android:name="com.limitless.moansports.TeamViewFragment"
+        android:label="fragment_team_view"
+        tools:layout="@layout/fragment_team_view" />
+</navigation>
