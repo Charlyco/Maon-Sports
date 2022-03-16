@@ -3,18 +3,24 @@ package com.limitless.moansports
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.limitless.moansports.data.Competitions
 import com.limitless.moansports.data.CompetitionsItem
 import com.limitless.moansports.databinding.CompetitionRowBinding
 
-class CompetitionsAdapter(private val dataset: MutableList<CompetitionsItem>):
+class CompetitionsAdapter (private val dataset: MutableList<CompetitionsItem>):
     RecyclerView.Adapter<CompetitionsAdapter.CompetitionsViewHolder>() {
 
-    class CompetitionsViewHolder(val binding: CompetitionRowBinding):
+    private lateinit var onItemClickedListener: OnItemClickedListener
+
+    inner class CompetitionsViewHolder (private val binding: CompetitionRowBinding):
         RecyclerView.ViewHolder(binding.root) {
         fun bind(get: CompetitionsItem) {
             binding.textViewLeagueName.text = get.name
-            binding.textViewCountry.text = get.area.name
-            binding.textViewStartDate.text = get.currentSeason.startDate
+            binding.textViewCountry.text = get.area?.name
+            binding.textViewStartDate.text = get.currentSeason?.startDate
+            binding.root.setOnClickListener {
+                onItemClickedListener.onClick(it, adapterPosition)
+            }
         }
 
     }
@@ -32,5 +38,12 @@ class CompetitionsAdapter(private val dataset: MutableList<CompetitionsItem>):
 
     override fun getItemCount(): Int {
         return dataset.size
+    }
+    fun setClickedListener(clickedListener: OnItemClickedListener) {
+        this.onItemClickedListener = clickedListener
+    }
+
+    fun getCompetitionItemAtPosition(position: Int): CompetitionsItem {
+        return dataset[position]
     }
 }

@@ -1,16 +1,23 @@
 package com.limitless.moansports.data
 
+import androidx.room.Embedded
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
+@Entity(tableName = "competitions")
 data class CompetitionsItem(@SerializedName("area")
-                            val area: Area,
+                            @Embedded(prefix = "ar_")
+                            val area: Area?,
                             @SerializedName("code")
-                            val code: String = "",
+                            val code: String? = "",
                             @SerializedName("currentSeason")
-                            val currentSeason: CurrentSeason,
+                            @Embedded(prefix = "sea_")
+                            val currentSeason: CurrentSeason?,
                             @SerializedName("name")
-                            val name: String = "",
+                            val name: String? = "",
                             @SerializedName("id")
+                            @PrimaryKey
                             val id: Int = 0,
                             @SerializedName("numberOfAvailableSeasons")
                             val numberOfAvailableSeasons: Int = 0)
