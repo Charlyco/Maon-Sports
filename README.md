@@ -1,1 +1,1 @@
-# Maon-Sports
+# Maon-SportsThis is the response I get from querying the Teams endpoint with the correct API key received in my email from the API publisher when I created an account at https://www.football-data.org/. My API key is :  04e47f6e20824802a4463deba609764b. However, the Competitions and Area endpoints work well and I have written enough code to retrieve all competitions, persist them in a room database and load same in a recyclerView on the first screen. 
